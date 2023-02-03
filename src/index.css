@@ -1,0 +1,35 @@
+/*RESET*/
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background-color: #05292E;
+    color: white;
+}
+
+h1, h2, h3, h4, p, ul {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+ul {
+    padding-left: 0;
+    list-style: none;
+}
+
+img {
+    display: block;
+    width: 100%;
+}
+
+input {
+    outline: none;
+    border: none;
+}
+
+button {
+    border: none;
+}
+

@@ -1,0 +1,33 @@
+.app {
+    padding: 2em 1.5em;
+}
+
+.app__tittle {
+    text-align: center;
+    margin-bottom: 0.6em;
+}
+
+.form {
+    display: flex;
+    justify-content: center;
+    height: 1.8em;
+}
+
+.form__input {
+    width: 100%;
+    max-width: 200px;
+    padding-left: 1em;
+    border-radius: 5px 0 0 5px;
+}
+
+.form__btn {
+    width: 80px;
+    border-radius: 0 5px 5px 0;
+}
+
+.app__error {
+    text-align: center;
+    line-height: 2em;
+}
+
+

@@ -1,0 +1,20 @@
+.location__info-container {
+    text-align: center;
+  
+}
+
+
+.location__tittle {
+    margin-top: 20px;
+    font-size: 3rem;
+}
+.location__ul{
+    display: flex;
+    justify-content:space-between;
+    margin: 20px 50px;
+    font-size: 20px; 
+}
+
+.location__list {
+    font-weight: bold;
+}

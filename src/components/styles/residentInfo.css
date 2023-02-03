@@ -1,0 +1,51 @@
+.resident__container {
+    display: flex;
+    gap: 2em;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 1400px;
+    margin: 0 auto;
+    
+}
+
+.resident {
+    background-color: #062226;;
+}
+
+.resident__header {
+    position: relative;
+}
+
+.residen__container-status {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    background-color: #05292E;;
+    width: 100px;
+    border-radius: 0 10px 10px 0;
+
+    position: absolute;
+
+    top: 20px;
+}
+
+.resident__circle {
+    display: block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin: 5px;
+   background-color: aqua; 
+}
+
+.Dead {
+    background-color: red; 
+}
+
+.Alive {
+    background-color: green; 
+}
+
+.unknown {
+    background-color: grey; 
+}
