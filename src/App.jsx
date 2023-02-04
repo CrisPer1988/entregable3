@@ -68,9 +68,7 @@ function App() {
           <button className="form__btn">Search</button>
         </form>
         {hasError ? (
-          <h2 className="app__error">
-            ❌ Hey! you must provide an id from 1 to 126 🥺
-          </h2>
+          <Page404 />
         ) : (
           <>
             <LocationInfo location={location} locationNum={numberLocation} />

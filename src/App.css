@@ -52,7 +52,7 @@
     width: 100%;
     opacity: 0.5;
     position: absolute;
-    top: 0;
+    top: 250px;
     left: 0;
     min-height: 100vh;
     z-index: -1;
@@ -66,4 +66,16 @@
     background-color: green;
     color: papayawhip;
     cursor: pointer;
+}
+
+@media (max-width:1000px) {
+    .banner {
+        background-position-y: -30px;
+    }
+}
+
+@media (max-width:660px) {
+    .banner {
+        background-position-y: top;
+    }
 }
