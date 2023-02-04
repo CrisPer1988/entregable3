@@ -5,6 +5,7 @@ import LocationInfo from "./components/LocationInfo";
 import ResidentInfo from "./components/ResidentInfo";
 import getRandomLocation from "./utils/getRandomLocation";
 import Pagination from "./components/Pagination";
+import Page404 from "./components/Page404";
 
 function App() {
   const [location, setLocation] = useState();
@@ -62,9 +63,7 @@ function App() {
         <button className="form__btn">Search</button>
       </form>
       {hasError ? (
-        <h2 className="app__error">
-          ❌ Hey! you must provide an id from 1 to 126 🥺
-        </h2>
+        <Page404 setNumberLocation={setNumberLocation}/>
       ) : (
         <>
           <LocationInfo location={location} locationNum={numberLocation} />
