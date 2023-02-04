@@ -37,7 +37,7 @@ function App() {
     e.target.inputLocation.value = e.target.inputLocation.value.trim();
   };
 
-  console.log(numberLocation);
+  /* console.log(numberLocation); */
 
   const indexOfLastPost = currentPage * residentsPerPage;
   const indexOfFistPost = indexOfLastPost - residentsPerPage;
@@ -67,7 +67,7 @@ function App() {
         </h2>
       ) : (
         <>
-          <LocationInfo location={location} />
+          <LocationInfo location={location} locationNum={numberLocation} />
           <Pagination
             residentsPerPage={residentsPerPage}
             totalResidents={location?.residents.length}
