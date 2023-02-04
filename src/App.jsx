@@ -5,6 +5,7 @@ import LocationInfo from "./components/LocationInfo";
 import ResidentInfo from "./components/ResidentInfo";
 import getRandomLocation from "./utils/getRandomLocation";
 import Pagination from "./components/Pagination";
+import Page404 from "./components/Page404";
 
 function App() {
   const [location, setLocation] = useState();

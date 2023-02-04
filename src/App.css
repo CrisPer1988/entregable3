@@ -34,13 +34,13 @@
     height: 40px;
     width: 80px;
     border-radius: 0 5px 5px 0;
-    cursor: pointer;
-    background: #ffe400;
 }
 
-.form__btn:active {
-    transform: scaleY(.95);
-    background: green;
+.app__error-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .app__error {
@@ -48,14 +48,22 @@
     line-height: 2em;
 }
 
-@media (max-width:1000px) {
-    .banner {
-        background-position-y: -30px;
-    }
+.error__404 {
+    width: 100%;
+    opacity: 0.5;
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-height: 100vh;
+    z-index: -1;
 }
 
-@media (max-width:660px) {
-    .banner {
-        background-position-y: top;
-    }
+.error__btn {
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0.5em;
+    border-radius: 0.5em;
+    background-color: green;
+    color: papayawhip;
+    cursor: pointer;
 }
