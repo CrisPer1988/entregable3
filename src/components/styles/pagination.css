@@ -1,9 +1,11 @@
 .pagination {
+  width: 85%;
+  margin: auto;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+  justify-content: flex-start;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
 }
 
 .pagination button {

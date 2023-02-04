@@ -22,7 +22,7 @@ const ResidentInfo = ({ url }) => {
           <span className="resident__status">{character?.status}</span>
         </div>
       </header>
-      <section>
+      <section className="resident__info">
         <h3>{character?.name}</h3>
         <ul>
           <li>

@@ -1,6 +1,9 @@
 /*RESET*/
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@200;500&display=swap');
+
 * {
     box-sizing: border-box;
+    font-family: 'Noto Sans', sans-serif;
 }
 
 body {
@@ -9,7 +12,12 @@ body {
     color: white;
 }
 
-h1, h2, h3, h4, p, ul {
+h1,
+h2,
+h3,
+h4,
+p,
+ul {
     margin-top: 0;
     margin-bottom: 0;
 }
@@ -32,4 +40,3 @@ input {
 button {
     border: none;
 }
-

@@ -31,10 +31,13 @@ function App() {
     e.preventDefault();
     if (e.target.inputLocation.value.trim().length === 0) {
       setNumberLocation(getRandomLocation());
+      e.target.reset()
     } else {
       setNumberLocation(e.target.inputLocation.value.trim());
+      e.target.reset()
     }
     e.target.inputLocation.value = e.target.inputLocation.value.trim();
+    e.target.reset()
   };
 
   /* console.log(numberLocation); */
@@ -51,43 +54,46 @@ function App() {
   };
 
   return (
-    <div className="app">
-      <form className="form" onSubmit={handleSubmit}>
-        <input
-          className="form__input"
-          id="inputLocation"
-          type="text"
-          placeholder="Search from 1 to 126"
-        />
-        <button className="form__btn">Search</button>
-      </form>
-      {hasError ? (
-        <h2 className="app__error">
-          ❌ Hey! you must provide an id from 1 to 126 🥺
-        </h2>
-      ) : (
-        <>
-          <LocationInfo location={location} locationNum={numberLocation} />
-          <Pagination
-            residentsPerPage={residentsPerPage}
-            totalResidents={location?.residents.length}
-            paginate={paginate}
-            currentPage={currentPage}
+    <>
+      <div className="banner"></div>
+      <div className="app">
+        <form className="form" onSubmit={handleSubmit}>
+          <input
+            className="form__input"
+            id="inputLocation"
+            type="text"
+            placeholder="Search from 1 to 126"
           />
-          <div className="resident__container">
-            {currentResidents?.map((url) => (
-              <ResidentInfo key={url} url={url} />
-            ))}
-          </div>
-          <Pagination
-            residentsPerPage={residentsPerPage}
-            totalResidents={location?.residents.length}
-            paginate={paginate}
-            currentPage={currentPage}
-          />
-        </>
-      )}
-    </div>
+          <button className="form__btn">Search</button>
+        </form>
+        {hasError ? (
+          <h2 className="app__error">
+            ❌ Hey! you must provide an id from 1 to 126 🥺
+          </h2>
+        ) : (
+          <>
+            <LocationInfo location={location} locationNum={numberLocation} />
+            <Pagination
+              residentsPerPage={residentsPerPage}
+              totalResidents={location?.residents.length}
+              paginate={paginate}
+              currentPage={currentPage}
+            />
+            <div className="resident__container">
+              {currentResidents?.map((url) => (
+                <ResidentInfo key={url} url={url} />
+              ))}
+            </div>
+            <Pagination
+              residentsPerPage={residentsPerPage}
+              totalResidents={location?.residents.length}
+              paginate={paginate}
+              currentPage={currentPage}
+            />
+          </>
+        )}
+      </div>
+    </>
   );
 }
 
