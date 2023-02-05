@@ -19,8 +19,10 @@
   cursor: pointer;
   transition: all 0.3s ease;
   background: transparent;
-  color: #eee;
+  color: var(--text-color-pagination);
   border-color: #eee;
+
+  transition: color .5s;
 }
 
 .pagination button:hover {

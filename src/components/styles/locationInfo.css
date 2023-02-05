@@ -4,7 +4,9 @@
   margin: auto;
   margin-top: 3rem;
   padding: .5rem 1rem;
-  background: #062226;
+  background: var(--bg-color-2);
+
+  transition: background .5s;
 }
 
 .location__info-container li {

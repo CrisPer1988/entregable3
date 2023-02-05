@@ -1,0 +1,17 @@
+.darkMode__icons {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2rem;
+    gap: 3rem;
+}
+
+.darkMode__icons i {
+    font-size: 2rem;
+    cursor: pointer;
+    padding: .5rem;
+    border-radius: 10px;
+
+    transition: color .5s, background .5s;
+}

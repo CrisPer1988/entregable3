@@ -9,8 +9,9 @@
 }
 
 .resident {
-    background-color: #062226;
-    ;
+    background-color: var(--bg-color-2);
+
+    transition: background-color .5s;
 }
 
 .resident__header {
@@ -21,14 +22,14 @@
     display: flex;
     gap: 0.5rem;
     align-items: center;
-    background-color: #05292E;
-    ;
+    background-color: var(--bg-color-2);
     width: 100px;
     border-radius: 0 10px 10px 0;
 
     position: absolute;
-
     top: 20px;
+
+    transition: background-color .5s;
 }
 
 .resident__circle {

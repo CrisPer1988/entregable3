@@ -6,6 +6,7 @@ import ResidentInfo from "./components/ResidentInfo";
 import getRandomLocation from "./utils/getRandomLocation";
 import Pagination from "./components/Pagination";
 import Page404 from "./components/Page404";
+import SunMode from "./components/SunMode";
 
 function App() {
   const [location, setLocation] = useState();
@@ -58,6 +59,7 @@ function App() {
     <>
       <div className="banner"></div>
       <div className="app">
+        <SunMode />
         <form className="form" onSubmit={handleSubmit}>
           <input
             className="form__input"
