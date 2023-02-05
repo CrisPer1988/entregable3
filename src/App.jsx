@@ -57,9 +57,12 @@ function App() {
 
   return (
     <>
-      <div className="banner"></div>
+      <div className="banner" id="banner"></div>
       <div className="app">
         <SunMode />
+        <a href="#banner" className="arrow__top">
+          <i className='bx bxs-up-arrow'></i>
+        </a>
         <form className="form" onSubmit={handleSubmit}>
           <input
             className="form__input"
