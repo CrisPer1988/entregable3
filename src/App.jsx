@@ -16,7 +16,7 @@ function App() {
   const [currentPage, setCurrentePage] = useState(1);
   const residentsPerPage = 10;
   const [locationList, setLocationList] = useState();
-  const [inputValue, setInputValue] = useState();
+  const [inputValue, setInputValue] = useState("");
   const [lisHasError, setLisHasError] = useState(false);
   const [isLoad, setIsLoad] = useState(true)
 
@@ -31,10 +31,11 @@ function App() {
       .catch((err) => {
         console.log(err);
         setHasError(true);
+        setInputValue("")
         
       })
       .finally(()=> setIsLoad(false));
-  }, [numberLocation]);
+  }, [numberLocation, inputValue]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -51,7 +52,7 @@ function App() {
 
   const handleChange = (e) => {
     setInputValue(e.target.value);
-    const url = `https://rickandmortyapi.com/api/location/?name=${e.target.value}`;
+    const url = `https://rickandmortyapi.com/api/location/?name=${inputValue}`;
 
     axios
       .get(url)
@@ -106,7 +107,7 @@ function App() {
             type="text"
             placeholder="Search from 1 to 126"
             onChange={handleChange}
-            /* value={inputValue} */
+             value={inputValue} 
           />
           <button className="form__btn">Search</button>
         </form>
