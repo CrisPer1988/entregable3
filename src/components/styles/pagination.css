@@ -22,7 +22,7 @@
   color: var(--text-color-pagination);
   border-color: #eee;
 
-  transition: color .5s;
+  transition: color 0.5s;
 }
 
 .pagination button:hover {

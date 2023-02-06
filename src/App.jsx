@@ -33,13 +33,13 @@ function App() {
     e.preventDefault();
     if (e.target.inputLocation.value.trim().length === 0) {
       setNumberLocation(getRandomLocation());
-      e.target.reset()
+      e.target.reset();
     } else {
       setNumberLocation(e.target.inputLocation.value.trim());
-      e.target.reset()
+      e.target.reset();
     }
     e.target.inputLocation.value = e.target.inputLocation.value.trim();
-    e.target.reset()
+    e.target.reset();
   };
 
   /* console.log(numberLocation); */
@@ -61,7 +61,7 @@ function App() {
       <div className="app">
         <SunMode />
         <a href="#banner" className="arrow__top">
-          <i className='bx bxs-up-arrow'></i>
+          <i className="bx bxs-up-arrow"></i>
         </a>
         <form className="form" onSubmit={handleSubmit}>
           <input
@@ -73,7 +73,7 @@ function App() {
           <button className="form__btn">Search</button>
         </form>
         {hasError ? (
-          <Page404 />
+          <Page404 setNumberLocation={setNumberLocation} />
         ) : (
           <>
             <LocationInfo location={location} locationNum={numberLocation} />
