@@ -53,6 +53,7 @@ function App() {
   const handleChange = (e) => {
     setInputValue(e.target.value);
     const url = `https://rickandmortyapi.com/api/location/?name=${inputValue}`;
+  
 
     axios
       .get(url)
@@ -60,15 +61,13 @@ function App() {
         setLocationList(res.data.results);
         setLisHasError(false);
       })
-      /* .then((res) => console.log(res.data.results.map((loc) => loc.name))) */
+     
       .catch((err) => {
         console.log(err);
         setLisHasError(true);
       
       });
   };
-
-  /* console.log(inputValue); */
 
   const indexOfLastPost = currentPage * residentsPerPage;
   const indexOfFistPost = indexOfLastPost - residentsPerPage;
@@ -85,7 +84,6 @@ function App() {
     <>
     {isLoad ? 
     <div className="container__load">
-      {/* <h2 className="name__compas">Alex, Alejandro, Luis y Cristian</h2> */}
       <div className="load__container">
         <div className="load"></div>
         <div className="load2"></div>
@@ -107,16 +105,16 @@ function App() {
             type="text"
             placeholder="Search from 1 to 126"
             onChange={handleChange}
-             value={inputValue} 
+            value={inputValue} 
           />
           <button className="form__btn">Search</button>
         </form>
     
         
         <div>
-          {lisHasError ? (
+          {lisHasError > 126 ? (
             <div>
-              {/* <p>SORRY! COULDN'T FIND THE LOCATION</p> */}
+              <p>SORRY! COULDN'T FIND THE LOCATION</p>
             </div>
           ) : inputValue ? (
             <Suggestions
@@ -125,9 +123,9 @@ function App() {
               setInputValue={setInputValue}
             />
           
-          ) : (
+           ) : (
             ""
-          )}
+          )} 
         </div>
         {hasError ? (
           <Page404 setNumberLocation={setNumberLocation} />
