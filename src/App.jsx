@@ -7,18 +7,14 @@ import getRandomLocation from "./utils/getRandomLocation";
 import Pagination from "./components/Pagination";
 import Page404 from "./components/Page404";
 import SunMode from "./components/SunMode";
-import Suggestions from "./components/Suggestions";
 
 function App() {
   const [location, setLocation] = useState();
   const [numberLocation, setNumberLocation] = useState(getRandomLocation());
   const [hasError, setHasError] = useState(false);
   const [currentPage, setCurrentePage] = useState(1);
-  const residentsPerPage = 10;
-  const [locationList, setLocationList] = useState();
-  const [inputValue, setInputValue] = useState("");
-  const [lisHasError, setLisHasError] = useState(false);
-  const [isLoad, setIsLoad] = useState(true)
+  const residentsPerPage = 6;
+  const [isLoad, setIsLoad] = useState(true);
 
   useEffect(() => {
     const url = `https://rickandmortyapi.com/api/location/${numberLocation}`;
@@ -31,11 +27,9 @@ function App() {
       .catch((err) => {
         console.log(err);
         setHasError(true);
-        setInputValue("")
-        
       })
-      .finally(()=> setIsLoad(false));
-  }, [numberLocation, inputValue]);
+      .finally(() => setIsLoad(false));
+  }, [numberLocation]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -48,24 +42,6 @@ function App() {
     }
     e.target.inputLocation.value = e.target.inputLocation.value.trim();
     e.target.reset();
-  };
-
-  const handleChange = (e) => {
-    setInputValue(e.target.value);
-    const url = `https://rickandmortyapi.com/api/location/?name=${inputValue}`;
-
-    axios
-      .get(url)
-      .then((res) => {
-        setLocationList(res.data.results);
-        setLisHasError(false);
-      })
-      /* .then((res) => console.log(res.data.results.map((loc) => loc.name))) */
-      .catch((err) => {
-        console.log(err);
-        setLisHasError(true);
-      
-      });
   };
 
   /* console.log(inputValue); */
@@ -83,56 +59,36 @@ function App() {
 
   return (
     <>
-    {isLoad ? 
-    <div className="container__load">
-      {/* <h2 className="name__compas">Alex, Alejandro, Luis y Cristian</h2> */}
-      <div className="load__container">
-        <div className="load"></div>
-        <div className="load2"></div>
-      </div> 
-    </div>
-      : 
-      <div className="banner" id="banner"></div>
-    }
-      <div className="app">    
+      {isLoad ? (
+        <div className="container__load">
+          {/* <h2 className="name__compas">Alex, Alejandro, Luis y Cristian</h2> */}
+          <div className="load__container">
+            <div className="load"></div>
+            <div className="load2"></div>
+          </div>
+        </div>
+      ) : (
+        <div className="banner" id="banner"></div>
+      )}
+      <div className="app">
         <SunMode />
         <a href="#banner" className="arrow__top">
           <i className="bx bxs-up-arrow"></i>
         </a>
-    
+
         <form className="form" onSubmit={handleSubmit}>
           <input
             className="form__input"
             id="inputLocation"
             type="text"
             placeholder="Search from 1 to 126"
-            onChange={handleChange}
-             value={inputValue} 
           />
           <button className="form__btn">Search</button>
         </form>
-    
-        
-        <div>
-          {lisHasError ? (
-            <div>
-              {/* <p>SORRY! COULDN'T FIND THE LOCATION</p> */}
-            </div>
-          ) : inputValue ? (
-            <Suggestions
-              locationList={locationList}
-              setNumberLocation={setNumberLocation}
-              setInputValue={setInputValue}
-            />
-          
-          ) : (
-            ""
-          )}
-        </div>
+
         {hasError ? (
           <Page404 setNumberLocation={setNumberLocation} />
         ) : (
-        
           <>
             <LocationInfo location={location} locationNum={numberLocation} />
             <Pagination
@@ -145,25 +101,18 @@ function App() {
               {currentResidents?.map((url) => (
                 <ResidentInfo key={url} url={url} />
               ))}
-            </div>            
+            </div>
             <Pagination
               residentsPerPage={residentsPerPage}
               totalResidents={location?.residents.length}
               paginate={paginate}
               currentPage={currentPage}
-              
             />
-            
           </>
-          
         )}
-      
       </div>
-      
     </>
-    
   );
-  
 }
 
 export default App;
