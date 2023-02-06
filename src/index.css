@@ -20,6 +20,7 @@
 body {
     margin: 0;
     background-color: var(--bg-color);
+    user-select: none;
 
     transition: background .5s;
 }
