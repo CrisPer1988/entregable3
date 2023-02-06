@@ -22,8 +22,9 @@
 .location__ul {
   display: flex;
   justify-content: space-between;
-  margin: 20px 50px;
+  margin-top: 40px;
   font-size: 15px;
+  gap: 1.2rem;
 }
 
 .location__list {
