@@ -18,6 +18,7 @@ function App() {
   const [locationList, setLocationList] = useState();
   const [inputValue, setInputValue] = useState();
   const [lisHasError, setLisHasError] = useState(false);
+  const [isLoad, setIsLoad] = useState(true)
 
   useEffect(() => {
     const url = `https://rickandmortyapi.com/api/location/${numberLocation}`;
@@ -30,7 +31,9 @@ function App() {
       .catch((err) => {
         console.log(err);
         setHasError(true);
-      });
+        
+      })
+      .finally(()=> setIsLoad(false));
   }, [numberLocation]);
 
   const handleSubmit = (e) => {
@@ -60,6 +63,7 @@ function App() {
       .catch((err) => {
         console.log(err);
         setLisHasError(true);
+      
       });
   };
 
@@ -78,12 +82,23 @@ function App() {
 
   return (
     <>
+    {isLoad ? 
+    <div className="container__load">
+      <h2 className="name__compas">Alex, Alejandro, Luis y Cristian</h2>
+      <div className="load__container">
+        <div className="load"></div>
+        <div className="load2"></div>
+      </div> 
+    </div>
+      : 
       <div className="banner" id="banner"></div>
-      <div className="app">
+    }
+      <div className="app">    
         <SunMode />
         <a href="#banner" className="arrow__top">
           <i className="bx bxs-up-arrow"></i>
         </a>
+    
         <form className="form" onSubmit={handleSubmit}>
           <input
             className="form__input"
@@ -95,10 +110,12 @@ function App() {
           />
           <button className="form__btn">Search</button>
         </form>
+    
+        
         <div>
           {lisHasError ? (
             <div>
-              <p>SORRY! COULDN'T FIND THE LOCATION</p>
+              {/* <p>SORRY! COULDN'T FIND THE LOCATION</p> */}
             </div>
           ) : inputValue ? (
             <Suggestions
@@ -106,6 +123,7 @@ function App() {
               setNumberLocation={setNumberLocation}
               setInputValue={setInputValue}
             />
+          
           ) : (
             ""
           )}
@@ -113,6 +131,7 @@ function App() {
         {hasError ? (
           <Page404 setNumberLocation={setNumberLocation} />
         ) : (
+        
           <>
             <LocationInfo location={location} locationNum={numberLocation} />
             <Pagination
@@ -125,18 +144,25 @@ function App() {
               {currentResidents?.map((url) => (
                 <ResidentInfo key={url} url={url} />
               ))}
-            </div>
+            </div>            
             <Pagination
               residentsPerPage={residentsPerPage}
               totalResidents={location?.residents.length}
               paginate={paginate}
               currentPage={currentPage}
+              
             />
+            
           </>
+          
         )}
+      
       </div>
+      
     </>
+    
   );
+  
 }
 
 export default App;
