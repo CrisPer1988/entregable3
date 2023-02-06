@@ -84,7 +84,7 @@ function App() {
     <>
     {isLoad ? 
     <div className="container__load">
-      <h2 className="name__compas">Alex, Alejandro, Luis y Cristian</h2>
+      {/* <h2 className="name__compas">Alex, Alejandro, Luis y Cristian</h2> */}
       <div className="load__container">
         <div className="load"></div>
         <div className="load2"></div>

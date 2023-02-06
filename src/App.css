@@ -127,30 +127,24 @@
 
 .container__load {
     width: 100%;
-    height: 100vh;
+    height: 100%;
     position: fixed;
-    background-color: black;
-
-    /* background-image: url(./assets/loading-img.webp);
-    background-size:contain;
-    background-repeat: no-repeat; */
+    background-image: url(./assets/loading-img.webp);
+    background-size:100% 100%; 
+    background-repeat:no-repeat;
     z-index: 100000;
 }
+
+/*--------LOADING--------------*/
 
 .load__container {
     position: relative;
     width: 150px;
     height: 150px;
     margin: auto;
-    top: 50vh; 
+    top: 70vh; 
 }
 
-.name__compas {
-    display: flex;
-    justify-content: center;
-    letter-spacing: 0.6rem;
-    margin-top: 20px;
-}
 
 .load {
     position: absolute;
@@ -199,3 +193,5 @@
         transform: translate(-50%, -50%) rotate(-360deg);
     }
 }
+
+/*--------LOADING--------------*/
