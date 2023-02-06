@@ -7,6 +7,7 @@ import getRandomLocation from "./utils/getRandomLocation";
 import Pagination from "./components/Pagination";
 import Page404 from "./components/Page404";
 import SunMode from "./components/SunMode";
+import Suggestions from "./components/Suggestions";
 
 function App() {
   const [location, setLocation] = useState();
@@ -14,6 +15,9 @@ function App() {
   const [hasError, setHasError] = useState(false);
   const [currentPage, setCurrentePage] = useState(1);
   const residentsPerPage = 10;
+  const [locationList, setLocationList] = useState();
+  const [inputValue, setInputValue] = useState();
+  const [lisHasError, setLisHasError] = useState(false);
 
   useEffect(() => {
     const url = `https://rickandmortyapi.com/api/location/${numberLocation}`;
@@ -42,7 +46,24 @@ function App() {
     e.target.reset();
   };
 
-  /* console.log(numberLocation); */
+  const handleChange = (e) => {
+    setInputValue(e.target.value);
+    const url = `https://rickandmortyapi.com/api/location/?name=${e.target.value}`;
+
+    axios
+      .get(url)
+      .then((res) => {
+        setLocationList(res.data.results);
+        setLisHasError(false);
+      })
+      /* .then((res) => console.log(res.data.results.map((loc) => loc.name))) */
+      .catch((err) => {
+        console.log(err);
+        setLisHasError(true);
+      });
+  };
+
+  /* console.log(inputValue); */
 
   const indexOfLastPost = currentPage * residentsPerPage;
   const indexOfFistPost = indexOfLastPost - residentsPerPage;
@@ -69,9 +90,26 @@ function App() {
             id="inputLocation"
             type="text"
             placeholder="Search from 1 to 126"
+            onChange={handleChange}
+            /* value={inputValue} */
           />
           <button className="form__btn">Search</button>
         </form>
+        <div>
+          {lisHasError ? (
+            <div>
+              <p>SORRY! COULDN'T FIND THE LOCATION</p>
+            </div>
+          ) : inputValue ? (
+            <Suggestions
+              locationList={locationList}
+              setNumberLocation={setNumberLocation}
+              setInputValue={setInputValue}
+            />
+          ) : (
+            ""
+          )}
+        </div>
         {hasError ? (
           <Page404 setNumberLocation={setNumberLocation} />
         ) : (
